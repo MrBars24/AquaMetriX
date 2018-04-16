@@ -1,0 +1,69 @@
+#wrapper{
+  position: relative;
+}
+
+
+img.needle{
+	transition: transform 1s;
+	position: absolute;
+	transform-origin: bottom center;
+	left:46%;
+	bottom: 0%;
+	height: 99%;
+}
+
+.wlevel-0{
+	transform: rotate(-83deg);
+}
+
+.wlevel-1{
+	transform: rotate(-71deg);
+}
+
+.wlevel-2{
+	transform: rotate(-58deg);
+}
+
+.wlevel-3{
+	transform: rotate(-45deg);
+}
+
+.wlevel-4{
+	transform: rotate(-32deg);
+}
+
+.wlevel-5{
+	transform: rotate(-20deg);
+}
+
+.wlevel-6{
+	transform: rotate(-7deg);
+}
+
+.wlevel-7{
+	transform: rotate(5deg);
+}
+
+.wlevel-8{
+	transform: rotate(18deg);
+}
+
+.wlevel-9{
+	transform: rotate(31deg);
+}
+
+.wlevel-10{
+	transform: rotate(44deg);
+}
+
+.wlevel-11{
+	transform: rotate(57deg);
+}
+
+.wlevel-12{
+	transform: rotate(70deg);
+}
+
+.wlevel-13{
+	transform: rotate(83deg);
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Untitled</title>
+    <link rel="author" href="humans.txt">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/mdb.min.css">
+    <link rel="stylesheet" href="assets/css/login.css">
+    <script type="text/javascript">
+    if (localStorage.getItem("userdata") != null || localStorage.getItem("userdata") != undefined) {
+        var a = JSON.parse(atob(localStorage.getItem("userdata")));
+        location.href = (a.user_type == "admin" ? "./admin/dashboard" : "./user/dashboard");
+    }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="card card-container">
+            <img id="profile-img" class="profile-img-card" src="assets/img/aqualytics.png" />
+            <p id="profile-name" class="profile-name-card"></p>
+            <form class="form-signin">
+                <span id="reauth-email" class="reauth-email"></span>
+                <input type="text" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
+            </form>
+            <!-- /form -->
+            <a href="#" class="forgot-password">
+                Forgot the password?
+            </a>
+        </div>
+        <!-- /card-container -->
+    </div>
+    <!-- /container -->
+    <script src="assets/js/jquery-3.1.1.min.js"></script>
+    <script src="assets/js/tether.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/mdb.min.js"></script>
+    <script src="assets/js/login.js"></script>
+    <script>
+    $(".form-signin").submit(function(e) {
+        e.preventDefault();
+        Aqualytics.login($(this).serialize());
+    })
+    </script>
+</body>
+
+</html>

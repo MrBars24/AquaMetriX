@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<!-- <html manifest="user.appcache"> -->
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AquaMetriX - Dashboard</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/mdb.min.css">
+    <link rel="stylesheet" href="../assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../assets/css/add-on.css">
+    <link rel="stylesheet" href="../assets/css/ph.css">
+    <style type="text/css">
+        main { padding-top: 70px !important; }
+    </style>
+</head>
+
+<body class="fixed-sn blue-skin">
+    <header>
+        <!-- Sidebar navigation -->
+        <ul id="slide-out" class="side-nav fixed">
+            <!-- Logo -->
+            <li>
+                <div class="logo-wrapper waves-light waves-effect waves-light">
+                    <a href="#"><img src="../assets/img/AquaMetriX.png">AquaMetriX</a>
+                </div>
+            </li>
+            <!--/. Logo -->
+            <!-- Side navigation links -->
+            <li>
+                <ul class="collapsible collapsible-accordion">
+                    <li><a href="#" class="collapsible-header waves-effect arrow-r active"><i class="fa fa-dashboard"></i> Dashboard</a>
+                    </li>
+                    <li><a href="maps.html" class="collapsible-header waves-effect arrow-r active"><i class="fa fa-map-o"></i> Maps</a>
+                    </li>
+                    <li><a href="logs.html" class="collapsible-header waves-effect arrow-r"><i class="fa fa-history"></i> Logs</a>
+                    </li>
+                    <li><a href="interpretation.html" class="collapsible-header waves-effect arrow-r"><i class="fa fa-asl-interpreting"></i> Interpretations</a>
+                    </li>
+                    <li><a href="notification.html" class="collapsible-header waves-effect arrow-r"><i class="fa fa-bell"></i>Notification <span class="tag red pull-right new-tag"></span></a>
+                    </li>
+                    <li><a href="reports.html" class="collapsible-header waves-effect arrow-r"><i class="fa fa-book"></i> Reports</a>
+                    </li>
+                    <li><a href="analytics.html" class="collapsible-header waves-effect arrow-r"><i class="fa fa-line-chart"></i> Analytics</a></li>
+                    <!-- <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-wrench"></i> Settings</a> -->
+                    </li>
+                </ul>
+            </li>
+            <!--/. Side navigation links -->
+        </ul>
+        <!--/. Sidebar navigation -->
+        <!--Navbar-->
+        <nav class="navbar navbar-fixed-top scrolling-navbar double-nav">
+            <!-- SideNav slide-out button -->
+            <div class="float-xs-left">
+                <a href="#" data-activates="slide-out" class="button-collapse"><i class="fa fa-bars"></i></a>
+            </div>
+            <!-- Breadcrumb-->
+            <div class="breadcrumb-dn">
+                <p>AquaMetriX</p>
+            </div>
+            <ul class="nav navbar-nav float-xs-right">
+                <li class="nav-item ">
+                    <a class="nav-link waves-effect waves-light" data-toggle="modal" data-target="#myModal"><i class="fa fa-hand-grab-o"></i> <span class="hidden-sm-down">Pick Device</span></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle waves-effect waves-light" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> Profile</a>
+                    <div class="dropdown-menu dropdown-primary dd-right" aria-labelledby="dropdownMenu1" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
+                        <a class="dropdown-item logout waves-effect waves-light" href="#">Logout</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <!--/.Navbar-->
+    </header>
+    <main class="view hm-black-strong">
+        <!-- <div class="overlay overlay-b flex-center"></div> -->
+        <div class="container-fluid">
+            <div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <h3 class="card-header info-color-dark white-text">PH Reading</h3>
+                        <div class="card-block card-block-temp flex-center">
+                            <h1 class="card-title"><span class="ph">7</span> PH Level</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <h3 class="card-header success-color-dark white-text">Turbidity Reading</h3>
+                        <div class="card-block card-block-temp flex-center">
+                            <h1 class="card-title"><span class="turb">6</span> NTU</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <h3 class="card-header danger-color-dark white-text">Temperature Reading</h3>
+                        <div class="card-block card-block-temp flex-center">
+                            <h1 class="card-title"><span class="deg">25</span>&deg;C</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 ph-container">
+                    <div class="card">
+                        <h3 class="card-header info-color-dark white-text">pH Meter</h3>
+                        <div class="card-block" style="padding-left:0px;padding-right:15px;padding-top:0px">
+                            <div id="wrapper">
+                                <img class="needle wlevel-0" src="../assets/img/gauge-needle.png" alt="">
+                                <canvas id="myPie"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <h3 class="card-header info-color-dark white-text">pH Level</h3>
+                        <div class="card-block" style="padding-left:0px;padding-right:15px;padding-top:0px">
+                            <canvas id="myChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <h3 class="card-header success-color-dark white-text">Turbidity</h3>
+                        <div class="card-block" style="padding-left:0px;padding-right:15px;padding-top:0px">
+                            <canvas id="myTurbid"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <h3 class="card-header danger-color-dark white-text">Temperature</h3>
+                        <div class="card-block" style="padding-left:0px;padding-right:15px;padding-top:0px">
+                            <canvas id="myTemp"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <!--Content-->
+            <div class="modal-content">
+                <!--Header-->
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">Pick Device</h4>
+                </div>
+                <!--Body-->
+                <div class="modal-body">
+                    <div class="list-group">
+                    </div>
+                </div>
+            </div>
+            <!--/.Content-->
+        </div>
+    </div>
+    <!-- /.Live preview-->
+    <script src="../assets/js/connect.js"></script>
+    <script src="../assets/js/jquery-3.1.1.min.js"></script>
+    <script src="../assets/js/tether.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/mdb.min.js"></script>
+    <script src="../assets/js/Chart.bundle.min.js"></script>
+    <script src="../assets/js/socket.io.js"></script>
+    <script src="../assets/js/aqualytics.js"></script>
+    <script src="../assets/js/user-alert.js"></script>
+    <script>
+    $('.button-collapse').sideNav();
+    var aqua = Aqualytics.init();
+    aqua.getData();
+    socket.on("update params", function(sent) {
+        console.log(sent.device,device_id,sent.device == device_id)
+        if(sent.device == device_id){
+            aqua.updateMeter(sent.ph);
+            aqua.updateTemperature(sent.temperature);
+            aqua.updateTurbidity(sent.turbidity);
+        }
+    })
+
+    $('#myModal').on('loaded.bs.modal', function(e) {
+        aqua.getUserDevices(function(devices) {
+            console.log(devices)
+            for (var i = 0; i < devices.length; i++) {
+                var act = (devices[i].device_id == device_id) ? "active" : "";
+                $(".list-group").append(`<a href="#" data-id="${devices[i].device_id}" class="list-group-item pick-list ${act}">${devices[i].address}</a>`);
+            }
+        })
+    })
+
+    $('#myModal').on('hide.bs.modal', function(e) {
+        $(".pick-list").remove();
+    })
+
+    $(document).on("click", ".pick-list", function() {
+        device_id = $(this).attr("data-id");
+        localStorage.setItem("activeDev", device_id);
+        $('#myModal').modal('hide')
+    })
+    </script>
+</body>
+
+</html>

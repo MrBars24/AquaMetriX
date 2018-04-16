@@ -1,0 +1,30 @@
+.top-nav-collapse {
+    background-color: #1976D2;
+}
+
+@media only screen and (max-width: 768px) {
+    .navbar:not(.top-nav-collapse) {
+        background-color: #1976D2;
+    }
+}
+
+footer.page-footer {
+    background-color: #1C3744;
+}
+
+/* customize */
+.feature-icon{
+    max-width: 70px !important;
+    box-shadow: none !important;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.row{
+	margin-right: 0;
+	margin-left: 0;
+}
+
+.works-img{
+    max-width:200px !important;
+}

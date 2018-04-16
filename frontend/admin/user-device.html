@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AquaMetriX - User Device</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/mdb.min.css">
+    <link rel="stylesheet" href="../assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../assets/css/add-on.css">
+    <style type="text/css">
+    .name {
+        margin-left: 10px;
+        margin-top: 10px;
+    }
+    </style>
+</head>
+
+<body class="fixed-sn blue-skin">
+    <header>
+        <!-- Sidebar navigation -->
+        <ul id="slide-out" class="side-nav fixed">
+            <!-- Logo -->
+            <li>
+                <div class="logo-wrapper waves-light waves-effect waves-light">
+                    <a href="#"><img src="../assets/img/AquaMetriX.png">AquaMetriX</a>
+                </div>
+            </li>
+            <!--/. Logo -->
+            <!-- Side navigation links -->
+            <li>
+                <ul class="collapsible collapsible-accordion">
+                    <li><a href="dashboard.html" class="collapsible-header waves-effect arrow-r"><i class="fa fa-dashboard"></i> Dashboard</a>
+                    </li>
+                    <li><a href="users.html" class="collapsible-header waves-effect arrow-r active"><i class="fa fa-user"></i> Users</a>
+                    </li>
+                    <li><a href="maps.html" class="collapsible-header waves-effect arrow-r"><i class="fa fa-map-o"></i> Maps</a>
+                    </li>
+                    <li><a href="logs.html" class="collapsible-header waves-effect arrow-r"><i class="fa fa-history"></i> Logs</a>
+                    </li>
+                    <li><a href="reports.html" class="collapsible-header waves-effect arrow-r"><i class="fa fa-book"></i> Reports</a>
+                    </li>
+                    <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-wrench"></i> Settings</a>
+                    </li>
+                </ul>
+            </li>
+            <!--/. Side navigation links -->
+        </ul>
+        <!--/. Sidebar navigation -->
+        <!--Navbar-->
+        <nav class="navbar navbar-fixed-top scrolling-navbar double-nav">
+            <!-- SideNav slide-out button -->
+            <div class="float-xs-left">
+                <a href="#" data-activates="slide-out" class="button-collapse"><i class="fa fa-bars"></i></a>
+            </div>
+            <!-- Breadcrumb-->
+            <div class="breadcrumb-dn">
+                <p>AquaMetriX / <a href="users.html">User</a> / Devices</p>
+            </div>
+            <ul class="nav navbar-nav float-xs-right">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle waves-effect waves-light" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> Profile</a>
+                    <div class="dropdown-menu dropdown-primary dd-right" aria-labelledby="dropdownMenu1" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
+                        <a class="dropdown-item logout waves-effect waves-light" href="#">Logout</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <!--/.Navbar-->
+    </header>
+    <main>
+        <div class="progress" hidden>
+            <div class="indeterminate" style="width: 70%"></div>
+        </div>
+        <h2 class="name">Name</h2>
+        <hr>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Address</th>
+                    <th>Latitude</th>
+                    <th>Longitude</th>
+                </tr>
+            </thead>
+            <tbody id="table-device">
+            </tbody>
+        </table>
+    </main>
+    <div class="fixed-action-btn" style="bottom: 15px; right: 15px;">
+        <a class="btn-floating btn-large green">
+            <i class="fa fa-plus"></i>
+        </a>
+    </div>
+    <!-- modals -->
+    <div class="modal" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm" role="document">
+            <!--Content-->
+            <div class="modal-content">
+                <div class="modal-body">
+                    <h4 class="modal-title">Delete device?</h4>
+                </div>
+                <div class="modal-footer">
+                    <a class="btn-flat blue-text btn-yes">Yes</a>
+                    <a class="btn-flat blue-text btn-no">No</a>
+                </div>
+            </div>
+            <!--/.Content-->
+        </div>
+    </div>
+    <!-- end modals -->
+    <!-- Modal -->
+    <div class="modal" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <!--Content-->
+            <div class="modal-content">
+                <!--Header-->
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">Add Device</h4>
+                </div>
+                <!--Body-->
+                <div class="modal-body">
+                    <form id="frmAddDev" class="row container">
+                        <div class="md-form">
+                            <input name="address" type="text" id="form1" class="form-control">
+                            <label for="form1">Address</label>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="md-form frmMap">
+                                <input name="latitude" type="text" id="form2" class="form-control">
+                                <label for="form2">Lat</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="md-form frmMap">
+                                <input name="longitude" type="text" id="form3" class="form-control">
+                                <label for="form3">Lng</label>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="map-container" class="z-depth-1" style="height: 300px"></div>
+                </div>
+                <!--Footer-->
+                <div class="modal-footer">
+                    <button id="saveDev" type="button" class="btn btn-primary btn-sm">Save changes</button>
+                </div>
+            </div>
+            <!--/.Content-->
+        </div>
+    </div>
+    <!-- /.Live preview-->
+    <script src="../assets/js/connect.js"></script>
+    <script src="../assets/js/jquery-3.1.1.min.js"></script>
+    <script src="http://maps.google.com/maps/api/js?key=AIzaSyDGJVa3emyIJKYX8PKfCwRbratKkcmJCy8"></script>
+    <script src="../assets/js/socket.io.js"></script>
+    <script src="../assets/js/tether.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/mdb.min.js"></script>
+    <script src="../assets/js/aqualytics.js"></script>
+    <script>
+    $('.button-collapse').sideNav();
+    $(document).ready(function() {
+        var aqua = Aqualytics.init();
+        $(".name").html(aqua.getParameterByName("user"));
+        window.usr_id = aqua.getParameterByName("id")
+        Aqualytics.getUserDevices(function(data) {
+            for (var i = 0; i < data.length; i++) {
+                $("#table-device").append(`<tr>
+                        <td class="device-id" scope="row">${data[i].device_id}</td>
+                        <td class="device-address">${data[i].address}</td>
+                        <td class="device-lat">${data[i].lat}</td>
+                        <td class="device-lng">${data[i].lng}</td>
+                        <td>
+                            <a id="editDevice" data-id="${i}" class="teal-text"><i class="fa fa-pencil"></i></a>
+                            <a id="deleteDevice" class="red-text"><i class="fa fa-times"></i></a>
+                        </td>
+                    </tr>`);
+            }
+        }, usr_id);
+    })
+
+
+    function init_map(lat, lng) {
+
+        var var_location = new google.maps.LatLng(lat, lng);
+
+        var var_mapoptions = {
+            center: var_location,
+            zoom: 10
+        };
+
+        var var_marker = new google.maps.Marker({
+            position: var_location,
+            map: var_map,
+            title: "New York"
+        });
+
+        var var_map = new google.maps.Map(document.getElementById("map-container"),
+            var_mapoptions);
+
+        var_map.addListener('click', function(e) {
+            $(".frmMap>label").addClass("active");
+            $("input[name=latitude]").val(e.latLng.lat())
+            $("input[name=longitude]").val(e.latLng.lng())
+
+            var_marker.setPosition(e.latLng)
+
+        });
+
+        var_marker.setMap(var_map);
+    }
+
+    $("#addModal").on('shown.bs.modal', function() {
+        if (window.row != null) {
+            init_map(row.find("td.device-lat").text(), row.find("td.device-lng").text());
+        } else {
+            init_map(14.599320, 120.984097);
+        }
+    })
+
+    $(document).on("submit", "#frmAddDev", function(e) {
+        e.preventDefault();
+        Aqualytics.addDevice($(this).serialize(), usr_id);
+    })
+
+    $(document).on("submit", "#frmEditDev", function(e) {
+        e.preventDefault();
+        console.log($(this).serialize())
+        Aqualytics.editDevice($(this).serialize(), row.find("td.device-id").text());
+    })
+
+    $("#saveDev").click(function() {
+        if ($("#frmEditDev").length > 0) {
+            $("#frmEditDev").trigger("submit");
+        }else{
+            $("#frmAddDev").trigger("submit");
+        }
+    })
+
+    $(document).on('click', '#editDevice', function() {
+        window.row = $(this).parent().parent();
+        init_addDevice("Edit Device", "edit", row.find("td.device-id").text());
+    });
+
+    $(document).on('click', '#deleteDevice', function() {
+        window.index = parseInt($(this).parent().parent().index());
+        window.device = $(this).parent().parent();
+        $("#deleteModal").modal();
+    });
+
+    $(".fa-plus").click(function() {
+        init_addDevice("Add Device", "add");
+    })
+
+    $(".btn-yes,.btn-no").click(function(){
+        if($(this).hasClass("btn-yes")){
+            $.ajax({
+                url: host + "/AquaMetriX/backend/api/v1/device/delete/" + device.find("td.device-id").text(),
+                type:"POST",
+                success:function(data){
+                    if(data){
+                        $("tbody#table-device tr").get(index).remove();
+                        $("#deleteModal").modal("hide");
+                    }
+                }
+            })
+        }else{
+            $("#deleteModal").modal("hide");
+        }
+    })
+
+    function init_addDevice(title, type, id) {
+        $("#myModalLabel").text(title);
+        if (type == "edit") {
+            $("#frmAddDev label[for=form1]").addClass("active");
+            $("#frmAddDev label[for=form2]").addClass("active");
+            $("#frmAddDev label[for=form3]").addClass("active");
+
+            $("input[name=address]").val(row.find("td.device-address").text());
+            $("input[name=latitude]").val(row.find("td.device-lat").text());
+            $("input[name=longitude]").val(row.find("td.device-lng").text());
+
+            $("form#frmAddDev").attr("id", "frmEditDev");
+        } else {
+            $("form#frmEditDev").attr("id", "frmAddDev");
+
+            $("#frmAddDev label[for=form1]").addClass("active");
+            $("#frmAddDev label[for=form2]").addClass("active");
+            $("#frmAddDev label[for=form3]").addClass("active");
+
+            $("#frmAddDev input[name=address]").val("");
+            $("#frmAddDev input[name=latitude]").val("");
+            $("#frmAddDev input[name=longitude]").val("");
+
+        }
+
+        $("#addModal").modal();
+    }
+    </script>
+</body>
+
+</html>

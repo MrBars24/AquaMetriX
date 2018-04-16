@@ -1,0 +1,28 @@
+CACHE MANIFEST
+# v2 2011-08-14
+# This is another comment
+dashboard.html
+interpretation.html
+logs.html
+../assets/css/add-on.css
+../assets/css/bootstrap.min.css
+../assets/css/font-awesome.min.css
+../assets/css/mdb.min.css
+../assets/css/ph.css
+../assets/js/bootstrap.min.js
+../assets/js/Chart.bundle.min.js
+../assets/js/connect.js
+../assets/js/jquery-3.1.1.min.js
+../assets/js/login.js
+../assets/js/socket.io.js
+../assets/js/mdb.min.js
+../assets/js/tether.min.js
+../assets/js/user-alert.js
+
+# Use from network if available
+NETWORK:
+*
+
+# Fallback content
+FALLBACK:
+/ fallback.html

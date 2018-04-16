@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<button id="testme">test</button>
+
+	<script src="../assets/js/jquery-3.1.1.min.js"></script>
+	<script src="../assets/js/socket.io.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+      var socket = io("http://myapp-bbylvs.rhcloud.com/");
+      
+      $("#testme").click(function(){
+      	socket.emit('chat message', "test test");
+      })
+
+      socket.on('chat message', function(msg){
+        console.log(msg)
+      })
+      /*$('form').submit(function(){
+        socket.emit('chat message', $('#m').val());
+        $('#m').val('');
+        return false;
+      });
+      socket.on('chat message', function(msg){
+        $('#messages').append($('<li>').text(msg));
+      });*/
+    })
+	</script>
+</body>
+</html>

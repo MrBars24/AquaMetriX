@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AquaMetriX - Users</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/mdb.min.css">
+    <link rel="stylesheet" href="../assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../assets/css/add-on.css">
+</head>
+
+<body class="fixed-sn blue-skin">
+    <header>
+        <!-- Sidebar navigation -->
+        <ul id="slide-out" class="side-nav fixed">
+            <!-- Logo -->
+            <li>
+                <div class="logo-wrapper waves-light waves-effect waves-light">
+                    <a href="#"><img src="../assets/img/AquaMetriX.png">AquaMetriX</a>
+                </div>
+            </li>
+            <!--/. Logo -->
+            <!-- Side navigation links -->
+            <li>
+                <ul class="collapsible collapsible-accordion">
+                    <li><a href="dashboard.html" class="collapsible-header waves-effect arrow-r"><i class="fa fa-dashboard"></i> Dashboard</a>
+                    </li>
+                    <li><a href="#" class="collapsible-header waves-effect arrow-r active"><i class="fa fa-user"></i> Users</a>
+                    </li>
+                    <li><a href="maps.html" class="collapsible-header waves-effect arrow-r"><i class="fa fa-map-o"></i> Maps</a>
+                    </li>
+                    <li><a href="logs.html" class="collapsible-header waves-effect arrow-r"><i class="fa fa-history"></i> Logs</a>
+                    </li>
+                    <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-book"></i> Reports</a>
+                    </li>
+                    <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-wrench"></i> Settings</a>
+                    </li>
+                </ul>
+            </li>
+            <!--/. Side navigation links -->
+        </ul>
+        <!--/. Sidebar navigation -->
+        <!--Navbar-->
+        <nav class="navbar navbar-fixed-top scrolling-navbar double-nav">
+            <!-- SideNav slide-out button -->
+            <div class="float-xs-left">
+                <a href="#" data-activates="slide-out" class="button-collapse"><i class="fa fa-bars"></i></a>
+            </div>
+            <!-- Breadcrumb-->
+            <div class="breadcrumb-dn">
+                <p>AquaMetriX</p>
+            </div>
+            <ul class="nav navbar-nav float-xs-right">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle waves-effect waves-light" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> Profile</a>
+                    <div class="dropdown-menu dropdown-primary dd-right" aria-labelledby="dropdownMenu1" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
+                        <a class="dropdown-item logout waves-effect waves-light" href="#">Logout</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <!--/.Navbar-->
+    </header>
+    <main>
+    		<div class="progress">
+            <div class="indeterminate" style="width: 70%"></div>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Username</th>
+                    <th>Devices</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="table-users">
+            </tbody>
+        </table>
+    </main>
+    <div class="fixed-action-btn" style="bottom: 15px; right: 15px;">
+        <a class="btn-floating btn-large green">
+            <i class="fa fa-user-plus"></i>
+        </a>
+    </div>
+    <!-- modals -->
+    <div class="modal" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm" role="document">
+            <!--Content-->
+            <div class="modal-content">
+                <div class="modal-body">
+                    <h4 class="modal-title">Delete user?</h4>
+                </div>
+                <div class="modal-footer">
+                    <a class="btn-flat blue-text btn-yes">Yes</a>
+                    <a class="btn-flat blue-text btn-no">No</a>
+                </div>
+            </div>
+            <!--/.Content-->
+        </div>
+    </div>
+    <!-- end modals -->
+    <!-- Modal -->
+    <div class="modal" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <!--Content-->
+            <div class="modal-content">
+                <!--Header-->
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">Add Device</h4>
+                </div>
+                <!--Body-->
+                <div class="modal-body">
+                    <form id="frmAddDev" class="row container">
+                        <div class="md-form">
+                            <input name="address" type="text" id="form1" class="form-control">
+                            <label for="form2">Address</label>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="md-form frmMap">
+                                <input name="latitude" type="text" id="form2" class="form-control">
+                                <label for="form2">Lat</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="md-form frmMap">
+                                <input name="longitude" type="text" id="form3" class="form-control">
+                                <label for="form2">Lng</label>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="map-container" class="z-depth-1" style="height: 300px"></div>
+                </div>
+                <!--Footer-->
+                <div class="modal-footer">
+                    <button id="saveDev" type="button" class="btn btn-primary btn-sm">Save changes</button>
+                </div>
+            </div>
+            <!--/.Content-->
+        </div>
+    </div>
+    <!-- /.Live preview-->
+    <!-- Modal -->
+    <div class="modal" id="addUser" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <!--Content-->
+            <div class="modal-content">
+                <!--Header-->
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="UserModalLabel">Add User</h4>
+                </div>
+                <!--Body-->
+                <div class="modal-body">
+                    <form id="frmAddUser">
+                        <div class="md-form">
+                            <input name="email" type="text" id="form1" class="form-control">
+                            <label for="form1">Email</label>
+                        </div>
+                        <div class="md-form">
+                            <input name="firstname" type="text" id="form2" class="form-control">
+                            <label for="form2">First Name</label>
+                        </div>
+                        <div class="md-form">
+                            <input name="lastname" type="text" id="form3" class="form-control">
+                            <label for="form3">Last Name</label>
+                        </div>
+                    </form>
+                </div>
+                <!--Footer-->
+                <div class="modal-footer">
+                    <button id="saveUser" type="button" class="btn btn-primary btn-sm">Save changes</button>
+                </div>
+            </div>
+            <!--/.Content-->
+        </div>
+    </div>
+    <script src="../assets/js/connect.js"></script>
+    <script src="../assets/js/jquery-3.1.1.min.js"></script>
+    <script src="http://maps.google.com/maps/api/js?key=AIzaSyDGJVa3emyIJKYX8PKfCwRbratKkcmJCy8"></script>
+    <script src="../assets/js/socket.io.js"></script>
+    <script src="../assets/js/tether.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/mdb.min.js"></script>
+    <script src="../assets/js/aqualytics.js"></script>
+    <script>
+    $('.button-collapse').sideNav();
+    var aqua = Aqualytics.init();
+    aqua.getUsersInfo();
+
+    $(".fixed-action-btn").click(function() {
+        $("#addUser").modal();
+    })
+
+    $("#addModal").on('shown.bs.modal', function() {
+        init_map(14.599320, 120.984097);
+    })
+
+    $(document).on('click', '#addDevice', function() { 
+        window.table_index = $(this).parent().parent().index() + 1;
+        window.user_id = $(this).attr("data-id");
+        $("#addModal").modal();
+    });
+
+    $("#frmAddDev").submit(function(e) {
+        e.preventDefault();
+        aqua.addDevice($(this).serialize());
+    })
+
+    $("#saveDev").click(function() {
+        $("#frmAddDev").trigger("submit");
+    })
+
+    $("#saveUser").click(function() {
+        if ($("#frmEditUser").length > 0) {
+            $("#frmEditUser").trigger('submit');
+        } else {
+            $("#frmAddUser").trigger('submit');
+        }
+    })
+
+
+    $(document).on('click', '#editUser', function() {
+        window.row = $(this);
+        init_addUser("Edit User", "edit", row.attr("data-id"));
+    });
+
+    $(document).on('click', '#viewDevice', function() {
+        var index = parseInt($(this).parent().parent().index());
+        var user = $(this).parent().parent();
+        location.href = "user-device?id=" + user.find("td.user-id").text() + "&user=" + user.find("td.user-firstname").text() + " " + user.find("td.user-lastname").text();
+    });
+
+    $(document).on('click', '#deleteUser', function() {
+        window.index = parseInt($(this).parent().parent().index());
+        window.user = $(this).parent().parent();
+        $("#deleteModal").modal();
+    });
+
+    $(".btn-yes,.btn-no").click(function(){
+        if($(this).hasClass("btn-yes")){
+            $.ajax({
+                url: host + "/AquaMetriX/backend/api/v1/user/delete/" + user.find("td.user-id").text(),
+                type:"POST",
+                success:function(data){
+                    if(data){
+                        $("tbody#table-users tr").get(index).remove();
+                        $("#deleteModal").modal("hide");
+                    }
+                }
+            })
+        }else{
+            $("#deleteModal").modal("hide");
+        }
+    })
+
+
+    $(".fixed-action-btn").click(function() {
+        init_addUser("Add User", "add");
+    })
+
+    function init_addUser(title, type, id) {
+        $("#UserModalLabel").text(title);
+        if (type == "edit") {
+            var temp = window.row.parent().parent();
+            window.user_id = temp.find("td.user-id").text();
+
+            $("#frmAddUser label[for=form1]").addClass("active");
+            $("#frmAddUser label[for=form2]").addClass("active");
+            $("#frmAddUser label[for=form3]").addClass("active");
+
+            $("input[name=email]").val(temp.find("td.user-email").text());
+            $("input[name=firstname]").val(temp.find("td.user-firstname").text());
+            $("input[name=lastname]").val(temp.find("td.user-lastname").text());
+
+            $("form#frmAddUser").attr("id", "frmEditUser");
+        } else {
+            $("form#frmEditUser").attr("id", "frmAddUser");
+
+            $("#frmAddUser label[for=form1]").removeClass("active");
+            $("#frmAddUser label[for=form2]").removeClass("active");
+            $("#frmAddUser label[for=form3]").removeClass("active");
+
+            $("#frmAddUser input[name=email]").val("");
+            $("#frmAddUser input[name=firstname]").val("");
+            $("#frmAddUser input[name=lastname]").val("");
+            
+        }
+
+        $("#addUser").modal();
+    }
+
+    $(document).on("submit", "#frmAddUser", function(e) {
+        e.preventDefault();
+        aqua.addUser($(this).serialize());
+        $('#addUser').modal('hide')
+    })
+
+    $(document).on("submit", "#frmEditUser", function(e) {
+        e.preventDefault();
+        aqua.editUser($(this).serialize(),window.row);
+        $('#addUser').modal('hide')
+    })
+
+    function init_map(lat, lng) {
+
+        var var_location = new google.maps.LatLng(lat, lng);
+
+        var var_mapoptions = {
+            center: var_location,
+            zoom: 10
+        };
+
+        var var_marker = new google.maps.Marker({
+            position: var_location,
+            map: var_map,
+            title: "New York"
+        });
+
+        var var_map = new google.maps.Map(document.getElementById("map-container"),
+            var_mapoptions);
+
+        var_map.addListener('click', function(e) {
+            $(".frmMap>label").addClass("active");
+            $("input[name=latitude]").val(e.latLng.lat())
+            $("input[name=longitude]").val(e.latLng.lng())
+
+            var_marker.setPosition(e.latLng)
+
+        });
+
+        var_marker.setMap(var_map);
+    }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,7 @@
+<?php 
+//DB config
+define("HOST", "localhost");
+define("USERNAME", "root");
+define("PASSWORD", "");
+define("DATABASE", "db_aqualytics");
+?>

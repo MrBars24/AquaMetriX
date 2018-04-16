@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AquaMetriX - Notification</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/mdb.min.css">
+    <link rel="stylesheet" href="../assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../assets/css/add-on.css">
+    <link rel="stylesheet" href="../assets/css/ph.css">
+    <style type="text/css">
+    .row {
+        margin-top: 10px;
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+    </style>
+</head>
+
+<body class="fixed-sn blue-skin">
+    <header>
+        <!-- Sidebar navigation -->
+        <ul id="slide-out" class="side-nav fixed">
+            <!-- Logo -->
+            <li>
+                <div class="logo-wrapper waves-light waves-effect waves-light">
+                    <a href="#"><img src="../assets/img/AquaMetriX.png">AquaMetriX</a>
+                </div>
+            </li>
+            <!--/. Logo -->
+            <!-- Side navigation links -->
+            <li>
+                <ul class="collapsible collapsible-accordion">
+                    <li><a href="dashboard.html" class="collapsible-header waves-effect arrow-r"><i class="fa fa-dashboard"></i> Dashboard</a>
+                    </li>
+                    <li><a href="maps.html" class="collapsible-header waves-effect arrow-r"><i class="fa fa-map-o"></i> Maps</a>
+                    </li>
+                    <li><a href="logs.html" class="collapsible-header waves-effect arrow-r"><i class="fa fa-history"></i> Logs</a>
+                    </li>
+                    <li><a href="interpretation.html" class="collapsible-header waves-effect arrow-r"><i class="fa fa-asl-interpreting"></i> Interpretations</a>
+                    </li>
+                    <li><a href="notification.html" class="collapsible-header waves-effect arrow-r"><i class="fa fa-bell"></i><span class="tag bg-primary label-pill float-xs-right noti-pill"></span> Notification</a>
+                    </li>
+                    <li><a href="#" class="collapsible-header waves-effect arrow-r active"><i class="fa fa-book"></i> Reports</a>
+                    </li>
+                    <li><a href="analytics.html" class="collapsible-header waves-effect arrow-r"><i class="fa fa-line-chart"></i> Analytics</a></li>
+                    <!-- <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-wrench"></i> Settings</a>
+                    </li> -->
+                </ul>
+            </li>
+            <!--/. Side navigation links -->
+        </ul>
+        <!--/. Sidebar navigation -->
+        <!--Navbar-->
+        <nav class="navbar navbar-fixed-top scrolling-navbar double-nav">
+            <!-- SideNav slide-out button -->
+            <div class="float-xs-left">
+                <a href="#" data-activates="slide-out" class="button-collapse"><i class="fa fa-bars"></i></a>
+            </div>
+            <!-- Breadcrumb-->
+            <div class="breadcrumb-dn">
+                <p>AquaMetriX</p>
+            </div>
+            <ul class="nav navbar-nav float-xs-right">
+                <li class="nav-item ">
+                    <a class="nav-link waves-effect waves-light" data-toggle="modal" data-target="#myModal"><i class="fa fa-hand-grab-o"></i> <span class="hidden-sm-down">Pick Device</span></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle waves-effect waves-light" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> Profile</a>
+                    <div class="dropdown-menu dropdown-primary dd-right" aria-labelledby="dropdownMenu1" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
+                        <a class="dropdown-item logout waves-effect waves-light" href="#">Logout</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <!--/.Navbar-->
+    </header>
+    <main>
+        <progress class="progress" value="25" max="100" style="display:none">
+            <div class="progress">
+                <span class="progress-bar" style="width: 25%;">25%</span>
+            </div>
+        </progress>
+        <div class="row">
+            <div class="offset-md-4 col-sm-4">
+                <select class="mdb-select">
+                    <option value="day">Daily</option>
+                    <option value="month">Monthly</option>
+                    <option value="year">Yearly</option>
+                </select>
+            </div>
+            <div class="col-sm-4 day">
+                <div class="md-form">
+                    <input placeholder="Selected date" type="text" id="date-picker" class="form-control datepicker" style="
+    padding-bottom: 3px" data-value="2017/1/6">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <!--Card-->
+                <div class="card card-cascade cascading-admin-card">
+                    <!--Card Data-->
+                    <div class="admin-up">
+                        <i class="fa fa-line-chart info-color-dark"></i>
+                        <div class="data">
+                            <h3>PH LEVEL</h3>
+                        </div>
+                    </div>
+                    <!--/.Card Data-->
+                    <!--Card content-->
+                    <div class="card-block">
+                        <table class="table no-header">
+                            <tbody>
+                                <tr>
+                                    <td>Average</td>
+                                    <td id="ph-ave"></td>
+                                </tr>
+                                <tr>
+                                    <td>Max Level</td>
+                                    <td id="ph-max"></td>
+                                </tr>
+                                <tr>
+                                    <td>Min Level</td>
+                                    <td id="ph-min"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!--/.Card content-->
+                </div>
+                <!--/.Card-->
+            </div>
+            <div class="col-md-4">
+                <!--Card-->
+                <div class="card card-cascade cascading-admin-card">
+                    <!--Card Data-->
+                    <div class="admin-up">
+                        <i class="fa fa-line-chart success-color-dark"></i>
+                        <div class="data">
+                            <h3>TURBIDITY</h3>
+                        </div>
+                    </div>
+                    <!--/.Card Data-->
+                    <!--Card content-->
+                    <div class="card-block">
+                        <table class="table no-header">
+                            <tbody>
+                                <tr>
+                                    <td>Average</td>
+                                    <td id="turb-ave"></td>
+                                </tr>
+                                <tr>
+                                    <td>Max Level</td>
+                                    <td id="turb-max"></td>
+                                </tr>
+                                <tr>
+                                    <td>Min Level</td>
+                                    <td id="turb-min"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!--/.Card content-->
+                </div>
+                <!--/.Card-->
+            </div>
+            <div class="col-md-4">
+                <!--Card-->
+                <div class="card card-cascade cascading-admin-card">
+                    <!--Card Data-->
+                    <div class="admin-up">
+                        <i class="fa fa-line-chart danger-color-dark"></i>
+                        <div class="data">
+                            <h3>TEMPERATURE</h3>
+                        </div>
+                    </div>
+                    <!--/.Card Data-->
+                    <!--Card content-->
+                    <div class="card-block">
+                        <table class="table no-header">
+                            <tbody>
+                                <tr>
+                                    <td>Average</td>
+                                    <td id="temp-ave"></td>
+                                </tr>
+                                <tr>
+                                    <td>Max Level</td>
+                                    <td id="temp-max"></td>
+                                </tr>
+                                <tr>
+                                    <td>Min Level</td>
+                                    <td id="temp-min"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!--/.Card content-->
+                </div>
+                <!--/.Card-->
+            </div>
+        </div>
+        <br>
+        <div class="container">
+            <h4 style="padding-left:">Statistics</h4>
+            <hr>
+            <div class="col-sm-6">
+                <div class="card">
+                    <h3 class="card-header info-color-dark white-text">pH Level</h3>
+                    <div class="card-block" style="padding-left:0px;padding-right:15px;padding-top:0px">
+                        <canvas id="phReport"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <h3 class="card-header success-color-dark white-text">Turbidity</h3>
+                    <div class="card-block" style="padding-left:0px;padding-right:15px;padding-top:0px">
+                        <canvas id="turbidReport"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <h3 class="card-header danger-color-dark white-text">Temperature</h3>
+                    <div class="card-block" style="padding-left:0px;padding-right:15px;padding-top:0px">
+                        <canvas id="myTemp"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <!--Content-->
+            <div class="modal-content">
+                <!--Header-->
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">Pick Device</h4>
+                </div>
+                <!--Body-->
+                <div class="modal-body">
+                    <div class="list-group device-list">
+                    </div>
+                </div>
+            </div>
+            <!--/.Content-->
+        </div>
+    </div>
+    <script src="../assets/js/connect.js"></script>
+    <script src="../assets/js/jquery-3.1.1.min.js"></script>
+    <script src="../assets/js/tether.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/mdb.min.js"></script>
+    <script src="../assets/js/socket.io.js"></script>
+    <script src="../assets/js/Chart.bundle.min.js"></script>
+    <script src="../assets/js/analytics.js"></script>
+    <script src="../assets/js/aqualytics.js"></script>
+    <script src="../assets/js/report.js"></script>
+    <script>
+    $('.button-collapse').sideNav();
+    window.t = 'day';
+    $(document).ready(function() {
+        var aqua = Aqualytics.init();
+        window.date = getDateToday("get");
+        $('.datepicker').pickadate({
+            clear: '',
+            today: '',
+            close: '',
+            formatSubmit: 'yyyy-mm-dd',
+            format: 'yyyy-mm-dd',
+            onClose: function() {
+                if (window.date != $(".datepicker").val()) {
+                    window.date = $(".datepicker").val();
+                    get_report(callback_report)
+                }
+            }
+        });
+        $('.mdb-select').material_select();
+
+        get_report(callback_report)
+    })
+
+    function getDateToday(ret) {
+        var today = new Date();
+        var dd = today.getDate();
+        var mm = today.getMonth() + 1; //January is 0!
+        var yyyy = today.getFullYear("get");
+
+        if (dd < 10) {
+            dd = '0' + dd
+        }
+
+        if (mm < 10) {
+            mm = '0' + mm
+        }
+        today = yyyy + '-' + mm + '-' + dd;
+
+        if (ret != null) {
+            return today;
+        } else {
+            $(".date-picker").attr("data-value", today);
+        }
+    }
+
+    function get_report(callback) {
+        $(".progress").show();
+        var str = host + "/AquaMetriX/backend/api/v1/report/device/" + localStorage.getItem("activeDev") + "/" + window.t + "/" + window.date;
+        console.log(str)
+        $.ajax({
+            url: str,
+            type: "GET",
+            success: function(data) {
+                $(".progress").hide();
+                console.log(data)
+                callback(data);
+            }
+        })
+    }
+
+    function callback_report(data) {
+        data = data.result;
+        $("#ph-ave").text(data.ph.average);
+        $("#turb-ave").text(data.turbidity.average);
+        $("#temp-ave").text(data.temperature.average);
+
+        $("#ph-max").text(data.ph.max);
+        $("#turb-max").text(data.turbidity.max);
+        $("#temp-max").text(data.temperature.max);
+
+        $("#ph-min").text(data.ph.min);
+        $("#turb-min").text(data.turbidity.min);
+        $("#temp-min").text(data.temperature.min);
+
+        var rs = Object.keys(data);
+        var dt = {};
+        var dtl = {};
+        rs.forEach(function(item, index) {
+            dt[item] = [];
+            dtl[item] = [];
+            data[item].data.forEach(function(obj, i) {
+                dt[item].push(parseInt(obj.val));
+                if (window.t == "day") {
+                    dtl[item].push(format_date(obj.date));
+                } else {
+                    dtl[item].push(obj.date);
+                }
+            })
+        })
+
+        displayPhStatistic(dt, dtl);
+        displayTurbidStatistic(dt, dtl);
+        displayTempStatistic(dt, dtl);
+    }
+
+
+    $(".mdb-select").change(function(e) {
+        window.t = $(this).val();
+        get_report(callback_report);
+    })
+
+    $(document).on("click", ".device-list a", function() {
+        if (!$(this).hasClass("active")) {
+            get_report(callback_report)
+        }
+    })
+    </script>
+</body>
+
+</html>

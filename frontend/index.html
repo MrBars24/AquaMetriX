@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="./assets/js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			if(localStorage.getItem("userdata")){
+				var a = JSON.parse(atob(localStorage.getItem("userdata"))) || [];
+				if(a.length!=0){
+					location.href = (a.user_type=="admin" ? "./admin/dashboard.html" : "./user/dashboard.html");
+				}else{
+					location.href = "login.html";
+				}
+			}else{
+					location.href = "login.html";
+			}
+		})
+	</script>
+</head>
+<body>
+</body>
+</html>

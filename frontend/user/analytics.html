@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AquaMetriX - Notification</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/mdb.min.css">
+    <link rel="stylesheet" href="../assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../assets/css/add-on.css">
+    <link rel="stylesheet" href="../assets/css/ph.css">
+    <style type="text/css">
+    .row {
+        margin-top: 10px;
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+    </style>
+</head>
+
+<body class="fixed-sn blue-skin">
+    <header>
+        <!-- Sidebar navigation -->
+        <ul id="slide-out" class="side-nav fixed">
+            <!-- Logo -->
+            <li>
+                <div class="logo-wrapper waves-light waves-effect waves-light">
+                    <a href="#"><img src="../assets/img/AquaMetriX.png">AquaMetriX</a>
+                </div>
+            </li>
+            <!--/. Logo -->
+            <!-- Side navigation links -->
+            <li>
+                <ul class="collapsible collapsible-accordion">
+                    <li><a href="dashboard.html" class="collapsible-header waves-effect arrow-r"><i class="fa fa-dashboard"></i> Dashboard</a>
+                    </li>
+                    <li><a href="maps.html" class="collapsible-header waves-effect arrow-r"><i class="fa fa-map-o"></i> Maps</a>
+                    </li>
+                    <li><a href="logs.html" class="collapsible-header waves-effect arrow-r"><i class="fa fa-history"></i> Logs</a>
+                    </li>
+                    <li><a href="interpretation.html" class="collapsible-header waves-effect arrow-r"><i class="fa fa-asl-interpreting"></i> Interpretations</a>
+                    </li>
+                    <li><a href="notification.html" class="collapsible-header waves-effect arrow-r"><i class="fa fa-bell"></i><span class="tag bg-primary label-pill float-xs-right noti-pill"></span> Notification</a>
+                    </li>
+                    <li><a href="reports.html" class="collapsible-header waves-effect arrow-r"><i class="fa fa-book"></i> Reports</a>
+                    </li>
+                    <li><a href="#" class="collapsible-header waves-effect arrow-r active"><i class="fa fa-line-chart"></i> Analytics</a>
+                    </li>
+                    <!-- <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-wrench"></i> Settings</a>
+                    </li> -->
+                </ul>
+            </li>
+            <!--/. Side navigation links -->
+        </ul>
+        <!--/. Sidebar navigation -->
+        <!--Navbar-->
+        <nav class="navbar navbar-fixed-top scrolling-navbar double-nav">
+            <!-- SideNav slide-out button -->
+            <div class="float-xs-left">
+                <a href="#" data-activates="slide-out" class="button-collapse"><i class="fa fa-bars"></i></a>
+            </div>
+            <!-- Breadcrumb-->
+            <div class="breadcrumb-dn">
+                <p>AquaMetriX</p>
+            </div>
+            <ul class="nav navbar-nav float-xs-right">
+                <li class="nav-item ">
+                    <a class="nav-link waves-effect waves-light" data-toggle="modal" data-target="#myModal"><i class="fa fa-hand-grab-o"></i> <span class="hidden-sm-down">Pick Device</span></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle waves-effect waves-light" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> Profile</a>
+                    <div class="dropdown-menu dropdown-primary dd-right" aria-labelledby="dropdownMenu1" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
+                        <a class="dropdown-item logout waves-effect waves-light" href="#">Logout</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <!--/.Navbar-->
+    </header>
+    <main>
+        <progress class="progress" value="25" max="100" style="display:none">
+            <div class="progress">
+                <span class="progress-bar" style="width: 25%;">25%</span>
+            </div>
+        </progress>
+        <div class="row">
+            <div class="offset-md-4 col-sm-4 day">
+                <div class="md-form">
+                    <input placeholder="Selected date" type="text" id="date-picker" class="form-control datepicker" style="
+    padding-bottom: 3px" data-value="2017/1/6">
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <select class="mdb-select mdb-time">
+                    <option value="" disabled selected>No Time Available</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <!--Card-->
+                <div class="card card-cascade cascading-admin-card">
+                    <!--Card Data-->
+                    <div class="admin-up">
+                        <i class="fa fa-signal info-color-dark"></i>
+                        <div class="data">
+                            <p>PH LEVEL</p>
+                            <h2 class="ph-val" style="margin-right:10px"></h2>
+                        </div>
+                    </div>
+                    <!--/.Card Data-->
+                </div>
+                <!--/.Card-->
+            </div>
+            <div class="col-md-4">
+                <!--Card-->
+                <div class="card card-cascade cascading-admin-card">
+                    <!--Card Data-->
+                    <div class="admin-up">
+                        <i class="fa fa-signal success-color-dark"></i>
+                        <div class="data">
+                            <p>TURBIDITY</p>
+                            <h2 class="turb-val" style="margin-right:10px"></h2>
+                        </div>
+                    </div>
+                    <!--/.Card Data-->
+                </div>
+                <!--/.Card-->
+            </div>
+            <div class="col-md-4">
+                <!--Card-->
+                <div class="card card-cascade cascading-admin-card">
+                    <!--Card Data-->
+                    <div class="admin-up">
+                        <i class="fa fa-signal danger-color-dark"></i>
+                        <div class="data">
+                            <p>TEMPERATURE</p>
+                            <h2 class="temp-val" style="margin-right:10px"></h2>
+                        </div>
+                    </div>
+                    <!--/.Card Data-->
+                </div>
+                <!--/.Card-->
+            </div>
+        </div>
+        <br>
+        <div class="col-md-12 col-remarks">
+            
+        </div>
+        <div class="row row-analysis">
+            
+        </div>
+    </main>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <!--Content-->
+            <div class="modal-content">
+                <!--Header-->
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">Pick Device</h4>
+                </div>
+                <!--Body-->
+                <div class="modal-body">
+                    <div class="list-group device-list">
+                    </div>
+                </div>
+            </div>
+            <!--/.Content-->
+        </div>
+    </div>
+    <script src="../assets/js/connect.js"></script>
+    <script src="../assets/js/jquery-3.1.1.min.js"></script>
+    <script src="../assets/js/tether.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/mdb.min.js"></script>
+    <script src="../assets/js/socket.io.js"></script>
+    <script src="../assets/js/Chart.bundle.min.js"></script>
+    <script src="../assets/js/analytics.js"></script>
+    <script src="../assets/js/aqualytics.js"></script>
+    <script>
+    window.date = getDateToday("get");
+
+    var aqua = Aqualytics.init();
+    $('.button-collapse').sideNav();
+    $('.datepicker').pickadate({
+        clear: '',
+        today: '',
+        close: '',
+        formatSubmit: 'yyyy-mm-dd',
+        format: 'yyyy-mm-dd',
+        onClose: function() {
+            if (window.date != $(".datepicker").val()) {
+                window.date = $(".datepicker").val();
+                $('.mdb-select').material_select('destroy');
+                $('.mdb-select').material_select();
+                $("select.mdb-select").html(`<option value="" disabled selected>No Time Available</option>`);
+                getDate();
+            }
+        }
+    });
+
+
+
+    $(document).ready(function() {
+        getDate();
+        $('.mdb-select').material_select();
+    });
+
+    $(".mdb-select").change(function() {
+        var index = $(this).val();
+        var obj = window.water[index];
+        $(".ph-val").text(obj.ph_level);
+        $(".turb-val").text(obj.turbidity);
+        $(".temp-val").text(obj.temperature);
+
+        analyze(obj.ph_level, obj.temperature, obj.turbidity);
+    })
+
+    $(document).on("click", ".device-list a", function() {
+        if (!$(this).hasClass("active")) {
+            getDate()
+        }
+    })
+
+    function getDate() {
+        $.ajax({
+            url: host + "/AquaMetriX/backend/api/v1/time/" + window.date + "/" + localStorage.getItem("activeDev"),
+            type: "GET",
+            success: function(data) {
+                try {
+                    window.water = data;
+                    data.forEach(function(item, index) {
+                        var temp = `<option value="${index}">${format_date(item.time)}</option>`;
+                        $("select.mdb-select>option:first-child").html("Choose Time");
+                        $("select.mdb-select").append(temp);
+                        $('.mdb-select').material_select('destroy');
+                        $('.mdb-select').material_select();
+
+                    })
+                } catch (e) {
+
+                }
+            }
+        })
+    }
+
+    function getDateToday(ret) {
+        var today = new Date();
+        var dd = today.getDate();
+        var mm = today.getMonth() + 1; //January is 0!
+        var yyyy = today.getFullYear("get");
+
+        if (dd < 10) {
+            dd = '0' + dd
+        }
+
+        if (mm < 10) {
+            mm = '0' + mm
+        }
+        today = yyyy + '-' + mm + '-' + dd;
+
+        if (ret != null) {
+            return today;
+        } else {
+            $(".date-picker").attr("data-value", today);
+        }
+    }
+
+    function format_date(date) {
+        date = date.substring(0, date.length - 3);
+        var ex = date.split(":");
+
+        if (parseInt(ex[0]) > 11) {
+            ex[0] = (ex[0] % 12 == 0) ? 12 : ex[0] % 12
+            return ex[0] + ":" + ex[1] + " PM";
+        } else {
+            if (ex[0] == 00) {
+                ex[0] = 12;
+            }
+            return ex[0] + ":" + ex[1] + " AM";
+        }
+    }
+    </script>
+</body>
+
+</html>
